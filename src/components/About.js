@@ -28,7 +28,7 @@ export default function About() {
   if (!author) return <div>Loading...</div>;
 
   return (
-    <main className="relative">
+    <main className="relative min-h-screen bg-blue-100">
       {/*<img src={flower} alt="flower" className="absolute w-full" />*/}
       <div className="p-10 lg:pt-48 container mx-auto relative">
         <section className="bg-pink-800 rounded-lg shadow-2xl lg:flex p-20">
