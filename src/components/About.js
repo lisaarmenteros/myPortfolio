@@ -34,7 +34,7 @@ export default function About() {
         <section className="bg-pink-800 rounded-lg shadow-2xl lg:flex p-20">
           <img
             src={urlFor(author.authorImage).url()}
-            className="rounded w-32 h-32 lg:w-64 lg:h-64 mr-8"
+            className="rounded-lg w-32 h-32 lg:w-64 lg:h-64 mr-8"
             alt={author.name}
           />
           <div className="text-lg flex flex-col justify-center">
