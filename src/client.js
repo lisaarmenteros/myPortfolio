@@ -1,8 +1,8 @@
-// Utilized to connect to the sanity client 
+// Utilized to connect to the sanity client
 
-import { sanityClient } from "@sanity/client";
+import sanityClient from "@sanity/client";
 
 export default sanityClient({
-    projectId: "stcz81fx",
-    dataset: "production"
-})
+  projectId: "stcz81fx",
+  dataset: "production",
+});
