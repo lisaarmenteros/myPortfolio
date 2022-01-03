@@ -1,3 +1,5 @@
+Portfolio created with React.js, Sanity.io, and Tailwind CSS following the [YouTube tutorial](https://www.youtube.com/watch?v=NO7_jgzVgbc) created by [Traversy Media](https://www.youtube.com/channel/UC29ju8bIPH5as8OGnQzwJyA)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
