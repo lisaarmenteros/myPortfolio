@@ -65,7 +65,7 @@ export default function NavBar() {
             style={{ height: 35, width: 35 }}
           />
           <SocialIcon
-            url="https://www.instagram.com/lisa_armenteros/"
+            url="https://www.instagram.com/artisticallycoding/"
             className="mr-4"
             target="_blank"
             fgColor="#fff"
