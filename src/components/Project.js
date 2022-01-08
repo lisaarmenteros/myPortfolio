@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import sanityClient from "../client";
+import { Link } from "react-router-dom";
 
 export default function Project() {
   const [projectData, setProjectData] = useState(null);
@@ -9,12 +10,20 @@ export default function Project() {
       .fetch(
         `*[_type == "project"]{
           title, 
+          slug,
           date, 
           place, 
           description, 
           projectType,
           link,
-          tags
+          tags,
+          mainImage{
+            asset ->{
+                _id,
+                url
+            },
+            alt
+        }
       }`
       )
       .then((data) => setProjectData(data))
@@ -25,24 +34,29 @@ export default function Project() {
     <main className="bg-blue-100 min-h-screen p-12">
       <section className="container mx-auto">
         <h1 className="text-5xl flex justify-center monospace">My Projects</h1>
-        <h2 className="text-lg text-gray-600 flex justify-center mb-12">
-          Welcome to my project page!
+        <h2 className="text-lg text-gray-600 flex justify-center mb-12 monospace">
+          A collection of my projects
         </h2>
         <section className="grid grid-cols-2 gap-8">
           {projectData &&
             projectData.map((project, index) => (
-              <article className="relative rounded-lg shadow-xl bg-white p-16">
-                <h3 className="text-gray-800 text-3xl font-bold mb-2 hover:text-red-700">
-                  <a
-                    href={project.link}
-                    alt={project.title}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {project.title}
-                  </a>
+              <Link
+                to={"/project/" + project.slug.current}
+                key={project.slug.current}
+                className="relative rounded-lg shadow-xl p-16 bg-black"
+                //key={index}
+              >
+                <h3 className="text-blue-300 text-lg font-bold px-3 py-4 monospace">
+                  {project.title}
                 </h3>
-                <div className="text-gray-500 text-xs space-x-4">
+                <span className="block h-64 relative leading-snug">
+                  <img
+                    src={project.mainImage.asset.url}
+                    alt={project.mainImage.alt}
+                    className="w-full h-full object-cover rounded absolute"
+                  />
+                </span>
+                <div className="text-gray-100 text-xs space-x-4 monospace">
                   <span>
                     <strong className="font-bold">Finished on</strong>:{" "}
                     {new Date(project.date).toLocaleDateString()}
@@ -55,19 +69,11 @@ export default function Project() {
                     <strong className="font-bold">Type</strong>:{" "}
                     {project.projectType}
                   </span>
-                  <p className="my-6 text-lg text-gray-700 leading-relaxed">
+                  <p className="my-6 text-lg text-white leading-relaxed monospace">
                     {project.description}
                   </p>
-                  <a
-                    href={project.link}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                    className="text-pink-500 font-bold hover:underline hover:text-red-400 text-xl"
-                  >
-                    View The Project
-                  </a>
                 </div>
-              </article>
+              </Link>
             ))}
         </section>
       </section>

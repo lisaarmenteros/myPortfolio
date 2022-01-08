@@ -1,11 +1,29 @@
 export default {
   name: "project",
-  title: "Project",
+  title: "Projects",
   type: "document",
   fields: [
     {
       name: "title",
+      title: "Title",
       type: "string",
+    },
+    {
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: {
+        source: "title",
+        maxLength: 96,
+      },
+    },
+    {
+      name: "mainImage",
+      title: "Main image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
     },
     { name: "date", type: "datetime" },
     {
@@ -13,8 +31,10 @@ export default {
       type: "string",
     },
     {
-      name: "description",
-      type: "text",
+      name: "categories",
+      title: "Categories",
+      type: "array",
+      of: [{ type: "reference", to: { type: "category" } }],
     },
     {
       name: "projectType",
@@ -33,6 +53,15 @@ export default {
       type: "url",
     },
     {
+      name: "description",
+      type: "text",
+    },
+    {
+      name: "body",
+      title: "Body",
+      type: "blockContent",
+    },
+    {
       name: "tags",
       type: "array",
       of: [
@@ -45,4 +74,18 @@ export default {
       },
     },
   ],
+
+  preview: {
+    select: {
+      title: "title",
+      author: "author.name",
+      media: "mainImage",
+    },
+    prepare(selection) {
+      const { author } = selection;
+      return Object.assign({}, selection, {
+        subtitle: author && `by ${author}`,
+      });
+    },
+  },
 };

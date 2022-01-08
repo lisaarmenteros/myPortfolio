@@ -30,8 +30,8 @@ export default function About() {
   return (
     <main className="relative min-h-screen bg-blue-100">
       {/*<img src={flower} alt="flower" className="absolute w-full" />*/}
-      <div className="p-10 lg:pt-48 container mx-auto relative">
-        <section className="bg-pink-800 rounded-lg shadow-2xl lg:flex p-20">
+      <div className="p-10 container mx-auto relative lg:pt-20">
+        <section className="bg-black rounded-lg shadow-2xl lg:flex p-20">
           <img
             src={urlFor(author.authorImage).url()}
             className="rounded-lg w-32 h-32 lg:w-64 lg:h-64 mr-8"
@@ -42,7 +42,7 @@ export default function About() {
               Hey there. I'm{" "}
               <span className="text-blue-100">{author.name}</span>
             </h1>
-            <div className="prose lg:prose-xl text-white">
+            <div className="prose lg:prose-xl text-white monospace">
               <SanityBlockContent
                 blocks={author.bio}
                 projectId="stcz81fx"
