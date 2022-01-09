@@ -37,7 +37,7 @@ export default function Project() {
         <h2 className="text-lg text-gray-600 flex justify-center mb-12 monospace">
           A collection of my projects
         </h2>
-        <section className="grid grid-cols-2 gap-8">
+        <section className="grid grid-cols-1 gap-8 sm:grid-cols-2">
           {projectData &&
             projectData.map((project, index) => (
               <Link
